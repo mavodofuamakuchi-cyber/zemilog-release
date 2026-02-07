@@ -1,5 +1,5 @@
 # Tomcat 10 (Java 17対応) を使用
-FROM tomcat:10.1-jdk17
+FROM tomcat:9.0-jdk17
 
 # 初期ファイル削除
 RUN rm -rf /usr/local/tomcat/webapps/*
