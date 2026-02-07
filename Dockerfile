@@ -1,16 +1,16 @@
-# Tomcat 10 (Java 17対応) を使用
+# ★絶対に 9.0 (jdk17) を指定する★
 FROM tomcat:9.0-jdk17
 
-# 初期ファイル削除
+# 初期ファイルを削除
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# シャットダウンポートを無効化する（sedコマンドで server.xml を書き換える）
+# シャットダウンポート無効化（エラーログ対策）
 RUN sed -i 's/port="8005"/port="-1"/' /usr/local/tomcat/conf/server.xml
 
-# 作成したWARファイルを配置
+# さっき作った WARファイルを配置
 COPY ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
-# ポート8080公開
+# ポート8080を開放
 EXPOSE 8080
 
 # Tomcat起動
